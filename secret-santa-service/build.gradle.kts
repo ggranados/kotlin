@@ -6,6 +6,7 @@ plugins {
 	kotlin("jvm") version "1.5.31"
 	kotlin("plugin.spring") version "1.5.31"
 	kotlin("plugin.jpa") version "1.5.31"
+	id ("org.sonarqube") version "3.3"
 }
 
 group = "com.ggranados.sercretsanta"
