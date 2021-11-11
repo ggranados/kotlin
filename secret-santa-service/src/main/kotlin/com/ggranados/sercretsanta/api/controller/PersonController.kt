@@ -1,8 +1,6 @@
 package com.ggranados.sercretsanta.api.controller
 
 import com.ggranados.sercretsanta.api.model.Person
-import com.ggranados.sercretsanta.api.model.PersonUtils.Companion.getPersonAssigned
-import com.ggranados.sercretsanta.api.model.PersonUtils.Companion.getPersonWithAssignation
 import com.ggranados.sercretsanta.api.service.PersonaServiceImpl
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
@@ -24,17 +22,17 @@ class PersonController {
     }
 
     @PostMapping
-    fun savePerson(@RequestBody person: Person) : ResponseEntity<Person>{
-        var p = serviceAPI.save(person);
-        return ResponseEntity<Person>(p, HttpStatus.OK)
+    fun savePerson(@RequestBody personParam: Person) : ResponseEntity<Person>{
+        val personSaved = serviceAPI.save(personParam);
+        return ResponseEntity<Person>(personSaved, HttpStatus.OK)
     }
 
     @PutMapping("/{id}")
-    fun updatePerson(@PathVariable id: Long, @RequestBody person: Person) : ResponseEntity<Person>{
-        var persona = serviceAPI[id];
-        return if (Objects.nonNull(persona)) {
-            var p = serviceAPI.save(person);
-            ResponseEntity<Person>(p,HttpStatus.OK);
+    fun updatePerson(@PathVariable id: Long, @RequestBody personParam: Person) : ResponseEntity<Person>{
+        val personFound = serviceAPI[id];
+        return if (Objects.nonNull(personFound)) {
+            val personSaved = serviceAPI.save(personParam);
+            ResponseEntity<Person>(personSaved,HttpStatus.OK);
         }else{
             ResponseEntity<Person>(HttpStatus.NOT_FOUND);
         }
@@ -43,9 +41,9 @@ class PersonController {
     @GetMapping("/{id}")
     fun getPersona(@PathVariable id: Long) : ResponseEntity<Person>{
 
-        var persona = serviceAPI[id];
-        return if (Objects.nonNull(persona)) {
-            ResponseEntity<Person>(persona,HttpStatus.OK);
+        val personFound = serviceAPI[id];
+        return if (Objects.nonNull(personFound)) {
+            ResponseEntity<Person>(personFound,HttpStatus.OK);
         }else{
             ResponseEntity<Person>(HttpStatus.NOT_FOUND);
         }
@@ -65,8 +63,8 @@ class PersonController {
     fun assignPerson(@PathVariable("idPerson") idPerson: Long,
                      @PathVariable("idAssigned") idAssigned: Long) : ResponseEntity<Person>{
 
-        val p = (serviceAPI.assign(idPerson, idAssigned));
+        val personAssigned = (serviceAPI.assign(idPerson, idAssigned));
 
-        return ResponseEntity<Person>(p!!,HttpStatus.OK);
+        return ResponseEntity<Person>(personAssigned!!,HttpStatus.OK);
     }
 }

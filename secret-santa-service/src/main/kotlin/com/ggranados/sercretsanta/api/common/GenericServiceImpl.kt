@@ -6,7 +6,7 @@ import java.util.function.Consumer
 import java.io.Serializable
 
 @Service
-abstract class GenericServiceImpl<T, ID : Serializable?> : GenericServiceAPI<T, ID> {
+abstract class GenericServiceImpl<T, ID : Serializable?> : GenericService<T, ID> {
     override fun save(entity: T): T {
         return dao.save(entity)
     }
