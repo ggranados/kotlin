@@ -10,7 +10,6 @@ import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.http.MediaType
 import org.springframework.test.web.servlet.MockMvc
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders
-import org.springframework.test.web.servlet.result.MockMvcResultHandlers
 import org.springframework.test.web.servlet.result.MockMvcResultHandlers.*
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 
@@ -22,11 +21,11 @@ internal class SecretSantaServiceApplicationTest{
     lateinit var mockMvc: MockMvc;
 
     @Test
-    @DisplayName("givenSavePerson")
+    @DisplayName("givenPersonWhenSavedThenPersonReturned")
     @Throws(Exception::class)
-    fun givenSavePerson() {
+    fun givenPersonWhenSavedThenPersonReturned() {
 
-        var personTest =  Person(1,"","","","",Person.PersonaStatus.REGISTERED);
+        var personTest =  Person(1,"","","","",Person.PersonaStatus.REGISTERED, null);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/api/v1/persons/")
             .contentType(MediaType.APPLICATION_JSON)
