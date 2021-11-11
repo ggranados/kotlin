@@ -5,12 +5,12 @@ import javax.persistence.*
 
 @Entity
 @Table( name= "event" )
-class Event (
+data class Event (
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     val id: Long = 0,
-
+    
     @Column( name = "title" )
     val title: String = "",
 

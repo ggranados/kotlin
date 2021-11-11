@@ -14,34 +14,23 @@ import java.util.*
 class PersonController {
 
     @Autowired
-    lateinit var  serviceAPI: PersonaServiceImpl
-
-    @GetMapping
-    fun getAllPersons() : MutableList<Person>? {
-        return serviceAPI.all
-    }
+    lateinit var  personaService: PersonaServiceImpl
 
     @PostMapping
     fun savePerson(@RequestBody personParam: Person) : ResponseEntity<Person>{
-        val personSaved = serviceAPI.save(personParam);
+        val personSaved = personaService.save(personParam);
         return ResponseEntity<Person>(personSaved, HttpStatus.OK)
     }
 
-    @PutMapping("/{id}")
-    fun updatePerson(@PathVariable id: Long, @RequestBody personParam: Person) : ResponseEntity<Person>{
-        val personFound = serviceAPI[id];
-        return if (Objects.nonNull(personFound)) {
-            val personSaved = serviceAPI.save(personParam);
-            ResponseEntity<Person>(personSaved,HttpStatus.OK);
-        }else{
-            ResponseEntity<Person>(HttpStatus.NOT_FOUND);
-        }
+    @GetMapping
+    fun getAllPersons() : MutableList<Person>? {
+        return personaService.all
     }
 
     @GetMapping("/{id}")
     fun getPersona(@PathVariable id: Long) : ResponseEntity<Person>{
 
-        val personFound = serviceAPI[id];
+        val personFound = personaService[id];
         return if (Objects.nonNull(personFound)) {
             ResponseEntity<Person>(personFound,HttpStatus.OK);
         }else{
@@ -50,20 +39,33 @@ class PersonController {
     }
 
     @DeleteMapping("/{id}")
-    fun delete(@PathVariable id: Long) : ResponseEntity<Person>{
-        return if (serviceAPI[id] != null) {
-            serviceAPI.delete(id);
+    fun deletePerson(@PathVariable id: Long) : ResponseEntity<Person>{
+        return if (personaService[id] != null) {
+            personaService.delete(id);
             ResponseEntity<Person>(HttpStatus.NO_CONTENT);
         }else{
             ResponseEntity<Person>(HttpStatus.NOT_FOUND);
         }
     }
 
+    @PutMapping("/{id}")
+    fun updatePerson(@PathVariable id: Long, @RequestBody personParam: Person) : ResponseEntity<Person>{
+        val personFound = personaService[id];
+        return if (Objects.nonNull(personFound)) {
+            val personSaved = personaService.save(personParam);
+            ResponseEntity<Person>(personSaved,HttpStatus.OK);
+        }else{
+            ResponseEntity<Person>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+
+
     @PatchMapping("{idPerson}/assignation/{idAssigned}")
     fun assignPerson(@PathVariable("idPerson") idPerson: Long,
                      @PathVariable("idAssigned") idAssigned: Long) : ResponseEntity<Person>{
 
-        val personAssigned = (serviceAPI.assign(idPerson, idAssigned));
+        val personAssigned = (personaService.assign(idPerson, idAssigned));
 
         return ResponseEntity<Person>(personAssigned!!,HttpStatus.OK);
     }
