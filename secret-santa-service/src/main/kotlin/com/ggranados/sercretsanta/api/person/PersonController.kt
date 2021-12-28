@@ -1,7 +1,5 @@
-package com.ggranados.sercretsanta.api.controller
+package com.ggranados.sercretsanta.api.person
 
-import com.ggranados.sercretsanta.api.model.Person
-import com.ggranados.sercretsanta.api.service.PersonaServiceImpl
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
@@ -16,11 +14,6 @@ class PersonController {
     @Autowired
     lateinit var  personaService: PersonaServiceImpl
 
-    @PostMapping
-    fun savePerson(@RequestBody personParam: Person) : ResponseEntity<Person>{
-        val personSaved = personaService.save(personParam);
-        return ResponseEntity<Person>(personSaved, HttpStatus.OK)
-    }
 
     @GetMapping
     fun getAllPersons() : MutableList<Person>? {

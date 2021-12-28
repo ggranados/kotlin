@@ -1,4 +1,4 @@
-package com.ggranados.sercretsanta.api.model
+package com.ggranados.sercretsanta.api.gift
 
 import javax.persistence.*
 

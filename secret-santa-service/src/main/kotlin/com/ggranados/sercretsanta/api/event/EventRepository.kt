@@ -1,6 +1,5 @@
-package com.ggranados.sercretsanta.api.repository
+package com.ggranados.sercretsanta.api.event
 
-import com.ggranados.sercretsanta.api.model.Event
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 

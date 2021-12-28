@@ -1,12 +1,12 @@
-package com.ggranados.sercretsanta.api.model
+package com.ggranados.sercretsanta.api.person
 
-import com.ggranados.sercretsanta.api.model.Person.PersonaStatus.*
+import com.ggranados.sercretsanta.api.person.Person.PersonaStatus.*
 
 class PersonUtils {
     companion object{
 
         @JvmStatic
-        fun getPersonWithAssignation(person: Person, assigned: Person) : Person{
+        fun getPersonWithAssignation(person: Person, assigned: Person) : Person {
 
             val p = Person(
                 person.id,
@@ -16,15 +16,13 @@ class PersonUtils {
                 person.phone,
                 person.status,
                 assigned,
-                person.event,
-                person.team,
                 person.options
             );
             return p;
         }
 
         @JvmStatic
-        fun getPersonAssigned(person: Person) : Person{
+        fun getPersonAssigned(person: Person) : Person {
 
             val p = Person(
                 person.id,
@@ -34,8 +32,6 @@ class PersonUtils {
                 person.phone,
                 ASSIGNED,
                 person.assigned,
-                person.event,
-                person.team,
                 person.options
             );
             return p;

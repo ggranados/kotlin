@@ -9,6 +9,12 @@ plugins {
 	id ("org.sonarqube") version "3.3"
 }
 
+allOpen {
+	annotation("javax.persistence.Entity")
+	annotation("javax.persistence.MappedSuperclass")
+	annotation("javax.persistence.Embeddable")
+}
+
 group = "com.ggranados.sercretsanta"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11

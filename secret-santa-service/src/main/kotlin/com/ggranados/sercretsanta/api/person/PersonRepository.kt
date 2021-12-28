@@ -1,6 +1,5 @@
-package com.ggranados.sercretsanta.api.repository
+package com.ggranados.sercretsanta.api.person
 
-import com.ggranados.sercretsanta.api.model.Person
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Repository
 

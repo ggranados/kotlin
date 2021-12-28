@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: sonar
-    password: sonar
+    url: jdbc:postgresql://localhost:5432/secretsanta
+    username: postgres
+    password: mysecretpassword
     driver: org.postgresql.Driver
   jpa:
     show-sql: true
@@ -11,3 +11,4 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         ddl-auto: update
         format_sql: true
+    generate-ddl: true

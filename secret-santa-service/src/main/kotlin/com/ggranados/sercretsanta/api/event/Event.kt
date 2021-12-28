@@ -1,5 +1,6 @@
-package com.ggranados.sercretsanta.api.model
+package com.ggranados.sercretsanta.api.event
 
+import com.ggranados.sercretsanta.api.team.Team
 import java.time.LocalDate
 import javax.persistence.*
 
@@ -18,10 +19,14 @@ data class Event (
     val date: LocalDate = LocalDate.now(),
 
     @OneToMany(
-        mappedBy = "event",
+        fetch = FetchType.LAZY,
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )
-    val participants: List<Person> = ArrayList<Person>()
+    @JoinColumn(
+        name = "event_id",
+        referencedColumnName = "id"
+    )
+    var teams: MutableList<Team> = ArrayList<Team>()
 ) {
 }

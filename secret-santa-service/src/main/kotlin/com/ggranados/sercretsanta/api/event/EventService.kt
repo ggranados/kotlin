@@ -1,7 +1,6 @@
-package com.ggranados.sercretsanta.api.service
+package com.ggranados.sercretsanta.api.event
 
 import com.ggranados.sercretsanta.api.common.GenericService
-import com.ggranados.sercretsanta.api.model.Event
 
 interface EventService : GenericService<Event, Long> {
 }

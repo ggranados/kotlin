@@ -1,9 +1,6 @@
-package com.ggranados.sercretsanta.api.service
+package com.ggranados.sercretsanta.api.person
 
 import com.ggranados.sercretsanta.api.common.GenericServiceImpl
-import com.ggranados.sercretsanta.api.model.Person
-import com.ggranados.sercretsanta.api.model.PersonUtils
-import com.ggranados.sercretsanta.api.repository.PersonRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Service

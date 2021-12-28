@@ -1,10 +1,11 @@
-package com.ggranados.sercretsanta.api.controller
+package com.ggranados.sercretsanta.api.event
 
-import com.ggranados.sercretsanta.api.model.Event
-import com.ggranados.sercretsanta.api.service.EventService
+import com.ggranados.sercretsanta.api.team.Team
+import com.ggranados.sercretsanta.api.team.TeamService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
+import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
@@ -16,10 +17,13 @@ class EventController {
     @Autowired
     lateinit var eventService: EventService
 
+    @Autowired
+    lateinit var teamService: TeamService
+
     @PostMapping
     fun saveEvent(@RequestBody event: Event) : ResponseEntity<Event>{
      val eventSaved = eventService.save(event);
-     return ResponseEntity<Event>(event, HttpStatus.OK);
+     return ResponseEntity<Event>(event, HttpStatus.ACCEPTED);
     }
 
     @GetMapping
@@ -46,6 +50,19 @@ class EventController {
         }else{
             ResponseEntity(HttpStatus.NOT_FOUND)
         }
+    }
+
+    @PostMapping("{eventId}/teams")
+    @Transactional
+    fun saveTeam(@RequestBody team: Team, @PathVariable eventId: Long): ResponseEntity<Team> {
+
+        var eventParent = eventService[eventId] ?: return ResponseEntity(HttpStatus.NOT_FOUND)
+        val teamSaved = teamService.save(team)
+
+        eventParent.teams.add(teamSaved)
+        eventService.save(eventParent)
+
+        return ResponseEntity<Team>(teamSaved, HttpStatus.ACCEPTED);
     }
 
 }

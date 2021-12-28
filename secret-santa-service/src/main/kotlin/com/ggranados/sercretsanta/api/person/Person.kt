@@ -1,11 +1,13 @@
-package com.ggranados.sercretsanta.api.model
+package com.ggranados.sercretsanta.api.person
 
+import com.ggranados.sercretsanta.api.gift.Gift
+import com.ggranados.sercretsanta.api.team.Team
 import org.springframework.lang.NonNull
 import javax.persistence.*
 
 @Entity
 @Table(name= "person")
-data class Person (
+data class  Person (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long = 0,
@@ -31,20 +33,14 @@ data class Person (
     @JoinColumn(name = "assigned_id", referencedColumnName = "id")
     val assigned: Person?,
 
-    @ManyToOne
-    @JoinColumn( name = "event_id")
-    val event: Event,
-
-    @ManyToOne
-    @JoinColumn( name = "team_id")
-    val team: Team,
-
     @OneToMany(
         cascade = [CascadeType.ALL],
         orphanRemoval = true
     )
-    @JoinColumn( name = "person_id" )
-    val options: List<Gift> = ArrayList<Gift>()
+    @JoinColumn(
+        name = "person_id",
+        referencedColumnName = "id" )
+    var options: MutableList<Gift> = ArrayList<Gift>()
 
     ){
 
