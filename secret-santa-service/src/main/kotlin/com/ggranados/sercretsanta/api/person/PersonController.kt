@@ -12,8 +12,13 @@ import java.util.*
 class PersonController {
 
     @Autowired
-    lateinit var  personaService: PersonaServiceImpl
+    lateinit var personaService: PersonaServiceImpl
 
+    @PostMapping()
+    fun savePerson(@RequestBody personParam: Person) : ResponseEntity<Person>{
+        val personSaved = personaService.save(personParam)
+        return ResponseEntity<Person>(personSaved, HttpStatus.OK)
+    }
 
     @GetMapping
     fun getAllPersons() : MutableList<Person>? {
@@ -51,8 +56,6 @@ class PersonController {
             ResponseEntity<Person>(HttpStatus.NOT_FOUND);
         }
     }
-
-
 
     @PatchMapping("{idPerson}/assignation/{idAssigned}")
     fun assignPerson(@PathVariable("idPerson") idPerson: Long,

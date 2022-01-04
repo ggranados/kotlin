@@ -5,8 +5,8 @@ import java.time.LocalDate
 import javax.persistence.*
 
 @Entity
-@Table( name= "event" )
-data class Event (
+@Table( name= "events" )
+class Event (
 
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
@@ -16,17 +16,7 @@ data class Event (
     val title: String = "",
 
     @Column( name = "date" )
-    val date: LocalDate = LocalDate.now(),
+    val date: LocalDate = LocalDate.now()
 
-    @OneToMany(
-        fetch = FetchType.LAZY,
-        cascade = [CascadeType.ALL],
-        orphanRemoval = true
-    )
-    @JoinColumn(
-        name = "event_id",
-        referencedColumnName = "id"
-    )
-    var teams: MutableList<Team> = ArrayList<Team>()
 ) {
 }

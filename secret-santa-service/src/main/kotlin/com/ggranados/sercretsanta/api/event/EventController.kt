@@ -17,9 +17,6 @@ class EventController {
     @Autowired
     lateinit var eventService: EventService
 
-    @Autowired
-    lateinit var teamService: TeamService
-
     @PostMapping
     fun saveEvent(@RequestBody event: Event) : ResponseEntity<Event>{
      val eventSaved = eventService.save(event);
@@ -52,17 +49,5 @@ class EventController {
         }
     }
 
-    @PostMapping("{eventId}/teams")
-    @Transactional
-    fun saveTeam(@RequestBody team: Team, @PathVariable eventId: Long): ResponseEntity<Team> {
-
-        var eventParent = eventService[eventId] ?: return ResponseEntity(HttpStatus.NOT_FOUND)
-        val teamSaved = teamService.save(team)
-
-        eventParent.teams.add(teamSaved)
-        eventService.save(eventParent)
-
-        return ResponseEntity<Team>(teamSaved, HttpStatus.ACCEPTED);
-    }
 
 }

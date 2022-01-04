@@ -1,9 +1,10 @@
 package com.ggranados.sercretsanta.api.gift
 
+import com.ggranados.sercretsanta.api.person.Person
 import javax.persistence.*
 
 @Entity
-@Table( name = "gift" )
+@Table( name = "gifts" )
 class Gift(
     @Id
     @GeneratedValue( strategy = GenerationType.AUTO )
@@ -14,7 +15,6 @@ class Gift(
 
     @Column ( name = "description" )
     val description: String,
-
 
 ) {
 

@@ -6,8 +6,8 @@ import org.hibernate.annotations.Fetch
 import javax.persistence.*
 
 @Entity
-@Table( name = "team")
-data class Team(
+@Table( name = "teams")
+class Team(
     @Id
     @GeneratedValue( strategy = GenerationType.IDENTITY )
     val id: Long = 0,
@@ -15,17 +15,6 @@ data class Team(
     @Column
     val name: String = "",
 
-
-    @OneToMany(
-        fetch = FetchType.LAZY,
-        cascade = [CascadeType.ALL],
-        orphanRemoval = true
-    )
-    @JoinColumn(
-        name = "team_id",
-        referencedColumnName = "id"
-    )
-    var members: MutableList<Person> = ArrayList<Person>()
 ) {
 
 }
