@@ -1,6 +1,5 @@
-package com.ggranados.sercretsanta.api.gift
+package com.ggranados.sercretsanta.api.model
 
-import com.ggranados.sercretsanta.api.person.Person
 import javax.persistence.*
 
 @Entity

@@ -1,7 +1,5 @@
-package com.ggranados.sercretsanta.api.person
+package com.ggranados.sercretsanta.api.model
 
-import com.ggranados.sercretsanta.api.gift.Gift
-import com.ggranados.sercretsanta.api.team.Team
 import org.springframework.lang.NonNull
 import javax.persistence.*
 

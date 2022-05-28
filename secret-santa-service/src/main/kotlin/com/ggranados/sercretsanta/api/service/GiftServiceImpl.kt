@@ -1,6 +1,7 @@
-package com.ggranados.sercretsanta.api.gift
+package com.ggranados.sercretsanta.api.service
 
-import com.ggranados.sercretsanta.api.common.GenericServiceImpl
+import com.ggranados.sercretsanta.api.repository.GiftRepository
+import com.ggranados.sercretsanta.api.model.Gift
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.repository.CrudRepository
 import org.springframework.stereotype.Service

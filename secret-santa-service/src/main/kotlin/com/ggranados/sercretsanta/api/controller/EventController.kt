@@ -1,11 +1,10 @@
-package com.ggranados.sercretsanta.api.event
+package com.ggranados.sercretsanta.api.controller
 
-import com.ggranados.sercretsanta.api.team.Team
-import com.ggranados.sercretsanta.api.team.TeamService
+import com.ggranados.sercretsanta.api.service.EventService
+import com.ggranados.sercretsanta.api.model.Event
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.transaction.annotation.Transactional
 import org.springframework.web.bind.annotation.*
 import java.util.*
 
@@ -19,8 +18,8 @@ class EventController {
 
     @PostMapping
     fun saveEvent(@RequestBody event: Event) : ResponseEntity<Event>{
-     val eventSaved = eventService.save(event);
-     return ResponseEntity<Event>(event, HttpStatus.ACCEPTED);
+     val eventSaved = eventService.save(event)
+     return ResponseEntity<Event>(eventSaved, HttpStatus.ACCEPTED)
     }
 
     @GetMapping
@@ -30,9 +29,9 @@ class EventController {
 
     @GetMapping("/{id}")
     fun getEvent(@PathVariable id: Long) : ResponseEntity<Event>{
-        val eventFound = eventService[id];
+        val eventFound = eventService[id]
         return if(Objects.nonNull(eventFound)){
-            ResponseEntity(eventFound, HttpStatus.OK);
+            ResponseEntity(eventFound, HttpStatus.OK)
         }else{
             ResponseEntity(HttpStatus.NOT_FOUND)
         }
@@ -40,10 +39,10 @@ class EventController {
 
     @DeleteMapping("{/{id}}")
     fun deleteEvent(@PathVariable id: Long) : ResponseEntity<Event>{
-        val eventFound = eventService[id];
+        val eventFound = eventService[id]
         return if(Objects.nonNull(eventFound)){
-            eventService.delete(id);
-            ResponseEntity(eventFound, HttpStatus.OK);
+            eventService.delete(id)
+            ResponseEntity(eventFound, HttpStatus.OK)
         }else{
             ResponseEntity(HttpStatus.NOT_FOUND)
         }

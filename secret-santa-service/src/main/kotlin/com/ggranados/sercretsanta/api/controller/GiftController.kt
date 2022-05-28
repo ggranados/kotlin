@@ -1,5 +1,7 @@
-package com.ggranados.sercretsanta.api.gift
+package com.ggranados.sercretsanta.api.controller
 
+import com.ggranados.sercretsanta.api.service.GiftService
+import com.ggranados.sercretsanta.api.model.Gift
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

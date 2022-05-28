@@ -1,4 +1,4 @@
-package com.ggranados.sercretsanta.api.common
+package com.ggranados.sercretsanta.api.service
 
 import java.io.Serializable
 

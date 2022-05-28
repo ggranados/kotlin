@@ -1,8 +1,5 @@
-package com.ggranados.sercretsanta.api.team
+package com.ggranados.sercretsanta.api.model
 
-import com.ggranados.sercretsanta.api.event.Event
-import com.ggranados.sercretsanta.api.person.Person
-import org.hibernate.annotations.Fetch
 import javax.persistence.*
 
 @Entity

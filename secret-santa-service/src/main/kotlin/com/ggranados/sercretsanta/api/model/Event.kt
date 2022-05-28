@@ -1,6 +1,5 @@
-package com.ggranados.sercretsanta.api.event
+package com.ggranados.sercretsanta.api.model
 
-import com.ggranados.sercretsanta.api.team.Team
 import java.time.LocalDate
 import javax.persistence.*
 
