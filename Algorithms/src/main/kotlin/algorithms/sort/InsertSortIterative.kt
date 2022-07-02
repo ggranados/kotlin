@@ -1,17 +1,20 @@
 package algorithms.sort
 
-fun sort(elements: MutableList<Int>): MutableList<Int>{
+class InsertSortIterative {
 
-    for(j in 1 until elements.size ){
+    fun sort(elements: MutableList<Int>): MutableList<Int> {
 
-        val key = elements[j]
-        var i = j-1
-        while(i >= 0 && key < elements[i]){
-            elements[i+1] = elements[i]
-            elements[i] = key
-            i--
+        for (j in 1 until elements.size) {
+
+            val key = elements[j]
+            var i = j - 1
+            while (i >= 0 && key < elements[i]) {
+                elements[i + 1] = elements[i]
+                elements[i] = key
+                i--
+            }
         }
-    }
 
-    return elements
+        return elements
+    }
 }

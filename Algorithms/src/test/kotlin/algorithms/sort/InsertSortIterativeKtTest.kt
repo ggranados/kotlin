@@ -6,13 +6,15 @@ import java.util.*
 
 internal class InsertSortIterativeKtTest {
 
+    val sorter: InsertSortIterative = InsertSortIterative()
+
     @Test
     fun testSort() {
         //given
         val elements = mutableListOf(3, 8, 6, 9, 6, 0)
 
         //when
-        print(sort(elements))
+        print(sorter.sort(elements))
 
         //then
         val lastElement: Optional<Int> = elements.stream()
