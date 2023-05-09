@@ -9,19 +9,16 @@ internal class InsertSortIterativeKtTest {
     @Test
     fun testSort() {
         //given
-        val elements = mutableListOf(3,8,6,9,6,0)
+        val elements = mutableListOf(3, 8, 6, 9, 6, 0)
 
         //when
         print(sort(elements))
 
         //then
-
-
-        //Then
         val lastElement: Optional<Int> = elements.stream()
             .reduce { a, b ->
                 assertTrue(
-                    isEqualOrGreaterThan(b, a),
+                    b >= a,
                     "$b element is not equal or greater than previous $a"
                 )
                 b
@@ -32,7 +29,6 @@ internal class InsertSortIterativeKtTest {
 
         assertTrue(lastElement.isPresent, "last element must be present")
         assertTrue(max.isPresent, "max element must be present")
-
         assertEquals(
             max.asInt,
             lastElement.get(),
@@ -40,8 +36,5 @@ internal class InsertSortIterativeKtTest {
         )
     }
 
-    private fun isEqualOrGreaterThan(next: Int, prev: Int): Boolean {
-        return next >= prev
-    }
 
 }
