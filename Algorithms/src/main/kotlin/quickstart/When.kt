@@ -1,6 +1,6 @@
 package quickstart
 
-fun main(args: Array<String>) {
+fun main() {
 
     var month = (Math.random() * 12).toInt() + 1
 

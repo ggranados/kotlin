@@ -1,6 +1,6 @@
 package quickstart
 
-fun main(args: Array<String>) {
+fun main() {
 
     var num = (Math.random() * 99 + 2).toInt()
     var isPrime = true;

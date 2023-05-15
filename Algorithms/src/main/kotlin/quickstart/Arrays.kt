@@ -1,6 +1,6 @@
 package quickstart
 
-fun main(args: Array<String>) {
+fun main() {
 
     var arr = DoubleArray(10)
 

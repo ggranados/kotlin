@@ -1,6 +1,6 @@
 package quickstart
 
-fun main(args: Array<String>){
+fun main(){
     var a = (Math.random() * 20).toInt();
     var b = (Math.random() * 20).toInt();
     var c = (Math.random() * 20).toInt();

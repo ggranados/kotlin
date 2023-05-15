@@ -1,6 +1,6 @@
 package quickstart
 
-fun main(args: Array<String>){
+fun main(){
     var radius = Math.random() * 10;
     val pi = 3.14
 

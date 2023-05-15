@@ -1,8 +1,8 @@
 package quickstart
 
-fun main(args: Array<String>) {
+fun main() {
 
-    var str = "simplemente un conchasumer muy poderoso"
+    var str = "simplemente un conchasumare muy poderoso"
 
     for( s in str)
         println(s)
