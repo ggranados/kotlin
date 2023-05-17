@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.util.*
 
-internal class InsertSortRecursiveKtTest {
+internal class InsertSortRecursiveTest {
 
     val sorter: InsertSortRecursive = InsertSortRecursive()
 
