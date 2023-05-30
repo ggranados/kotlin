@@ -1,5 +1,6 @@
-package algorithms.sort
+package algorithms.sort.insert
 
+import algorithms.sort.insert.InsertSortRecursive
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.Test
 import java.util.*
